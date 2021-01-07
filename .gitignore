@@ -1,0 +1,28 @@
+# Ignore everything
+/*
+/.**
+
+
+# Unignore .config, but keep ignoring everything in it
+# This lets us see .config so we can selectively unignore its contents
+
+!/.config
+/.config/**
+
+# git
+
+!.gitignore
+!.gitconfig
+
+# zsh
+
+!/.zshrc
+
+# vim
+
+!/.config/nvim
+!/.config/nvim/**
+
+# tmux
+
+!.tmux.conf
