@@ -1,5 +1,22 @@
-[pager]
-	branch = false
 [user]
 	name = Michael Martin
 	email = mlmartin13@gmail.com
+[color]
+	ui = true
+[push]
+	default = simple
+[alias]
+	co = checkout
+	s = status
+	c7 = rev-parse --short=7
+	m7 = rev-parse --short=7 master
+	h7 = rev-parse --short=7 HEAD
+[core]
+	autocrlf = input
+	editor = vi
+	whitespace = cr-at-eol
+	filemode = false
+[pager]
+	branch = false
+[diff]
+	tool = vimdiff
