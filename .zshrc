@@ -5,13 +5,6 @@ export ZSH="$HOME/.oh-my-zsh"
 
 ZSH_THEME="robbyrussell"
 
-alias vim="nvim"
-alias vi="nvim"
-alias vimdiff='nvim -d'
-
-export EDITOR="nvim"
-export VISUAL="nvim"
-
 # Use vi-mode (with jk as esc)
 bindkey -v
 bindkey -M viins 'jk' vi-cmd-mode
@@ -45,8 +38,16 @@ PROMPT=" $PROMPT"
 # Personal aliases and environment
 ###############################################################################
 
+if [[ "$OSTYPE" == "linux-gnu"* ]]; then
+  alias open="xdg-open"
+fi
 
-alias open="xdg-open"
+alias vim="nvim"
+alias vi="nvim"
+alias vimdiff='nvim -d'
+
+export EDITOR="nvim"
+export VISUAL="nvim"
 
 export PATH=./node_modules/.bin:$PATH
 
