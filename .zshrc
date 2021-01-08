@@ -1,12 +1,16 @@
 ###############################################################################
 # Main config
 ###############################################################################
-export ZSH="/home/michael/.oh-my-zsh"
+export ZSH="$HOME/.oh-my-zsh"
 
-ZSH_THEME=""
+ZSH_THEME="robbyrussell"
 
-export EDITOR="vi"
-export VISUAL="vi"
+alias vim="nvim"
+alias vi="nvim"
+alias vimdiff='nvim -d'
+
+export EDITOR="nvim"
+export VISUAL="nvim"
 
 # Use vi-mode (with jk as esc)
 bindkey -v
@@ -30,7 +34,7 @@ plugins=(
 source $ZSH/oh-my-zsh.sh
 
 fpath=( "$HOME/.zsh/functions" $fpath )
-fpath+=('/home/michael/.npm-global/lib/node_modules/pure-prompt/functions')
+fpath+=("$HOME/.npm-global/lib/node_modules/pure-prompt/functions")
 
 autoload -U promptinit; promptinit
 prompt pure
@@ -41,10 +45,11 @@ PROMPT=" $PROMPT"
 # Personal aliases and environment
 ###############################################################################
 
+
 alias open="xdg-open"
 
 export PATH=./node_modules/.bin:$PATH
 
 # fnm and npm
-export PATH=/home/michael/.fnm:/home/michael/.npm-global/bin:$PATH
+export PATH="$HOME/.fnm:/home/michael/.npm-global/bin:$PATH"
 eval "`fnm env --multi`"
