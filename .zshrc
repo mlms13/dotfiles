@@ -5,11 +5,6 @@ export ZSH="$HOME/.oh-my-zsh"
 
 ZSH_THEME="robbyrussell"
 
-# Use vi-mode (with jk as esc)
-bindkey -v
-bindkey -M viins 'jk' vi-cmd-mode
-bindkey -M viins 'kj' vi-cmd-mode
-
 ###############################################################################
 # Plugins and plugin config
 ###############################################################################
@@ -37,6 +32,11 @@ PROMPT=" $PROMPT"
 ###############################################################################
 # Personal aliases and environment
 ###############################################################################
+
+# Use vi-mode (with jk as esc)
+bindkey -v
+bindkey -M viins 'jk' vi-cmd-mode
+bindkey -M viins 'kj' vi-cmd-mode
 
 if [[ "$OSTYPE" == "linux-gnu"* ]]; then
   alias open="xdg-open"
