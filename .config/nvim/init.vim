@@ -5,6 +5,44 @@
 imap jk <Esc>
 imap kj <Esc>
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Plugins (load first)
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" Specify a directory for plugins
+
+call plug#begin(stdpath('data') . '/plugged')
+
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
+Plug 'purescript-contrib/purescript-vim'
+
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+
+Plug 'preservim/nerdtree'
+
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
+
+Plug 'aserebryakov/vim-todo-lists'
+
+Plug 'christoomey/vim-tmux-navigator'
+
+Plug 'sonph/onehalf', { 'rtp': 'vim' }
+
+call plug#end()
+
+" Theme
+"""""""
+
+set termguicolors
+
+syntax on
+set t_Co=256
+set cursorline
+colorscheme onehalfdark
+let g:airline_theme='onehalfdark'
+
 " Clipboard
 """""""""""
 set clipboard+=unnamedplus
@@ -54,34 +92,6 @@ nnoremap <silent> <CR> :noh<CR>
 set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50
   \,a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor
   \,sm:block-blinkwait175-blinkoff150-blinkon175
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Plugins
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-" Specify a directory for plugins
-
-call plug#begin(stdpath('data') . '/plugged')
-
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-
-Plug 'purescript-contrib/purescript-vim'
-
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
-
-Plug 'preservim/nerdtree'
-
-Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
-
-Plug 'aserebryakov/vim-todo-lists'
-
-Plug 'christoomey/vim-tmux-navigator'
-
-Plug 'mhinz/vim-signify'
-
-" Initialize plugin system
-call plug#end()
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Plugin-specific config

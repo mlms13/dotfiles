@@ -1,9 +1,9 @@
 ###############################################################################
-# Main config
+# Main confg
 ###############################################################################
 export ZSH="$HOME/.oh-my-zsh"
 
-ZSH_THEME="robbyrussell"
+# ZSH_THEME="robbyrussell"
 
 ###############################################################################
 # Plugins and plugin config
@@ -42,6 +42,10 @@ if [[ "$OSTYPE" == "linux-gnu"* ]]; then
   alias open="xdg-open"
 fi
 
+if [[ "$OSTYPE" == "darwin"* ]]; then
+  alias tree="find . -print | sed -e 's;[^/]*/;|____;g;s;____|;|;g'"
+fi
+
 alias vim="nvim"
 alias vi="nvim"
 alias vimdiff='nvim -d'
@@ -49,8 +53,8 @@ alias vimdiff='nvim -d'
 export EDITOR="nvim"
 export VISUAL="nvim"
 
-export PATH=./node_modules/.bin:$PATH
+export PATH=./node_modules/.bin:$HOME/.local/bin:$PATH
 
 # fnm and npm
-export PATH="$HOME/.fnm:/home/michael/.npm-global/bin:$PATH"
-eval "`fnm env --multi`"
+export PATH="$HOME/.fnm:$HOME/.npm-global/bin:$PATH"
+eval "$(fnm env --multi)"
