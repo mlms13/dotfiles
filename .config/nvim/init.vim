@@ -25,6 +25,8 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
 
 Plug 'aserebryakov/vim-todo-lists'
 
+Plug 'tpope/vim-commentary'
+
 Plug 'christoomey/vim-tmux-navigator'
 
 Plug 'sonph/onehalf', { 'rtp': 'vim' }
@@ -41,6 +43,7 @@ set t_Co=256
 set cursorline
 colorscheme onehalfdark
 let g:airline_theme='onehalfdark'
+" also worth trying? https://github.com/ghifarit53/tokyonight-vim
 
 " Clipboard
 """""""""""
@@ -137,3 +140,7 @@ nmap <leader>ac  <Plug>(coc-codeaction)
 
 " Apply AutoFix to problem on the current line.
 " nmap <leader>qf  <Plug>(coc-fix-current)
+
+" todo plugin doesn't auto-start due to this bug:
+" https://github.com/aserebryakov/vim-todo-lists/issues/26
+autocmd BufRead,BufNewFile *.todo.md set ft=todo | call VimTodoListsInit()
