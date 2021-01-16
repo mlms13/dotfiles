@@ -14,8 +14,7 @@ imap kj <Esc>
 call plug#begin(stdpath('data') . '/plugged')
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-
-Plug 'purescript-contrib/purescript-vim'
+Plug 'sheerun/vim-polyglot'
 
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
@@ -52,6 +51,32 @@ set clipboard+=unnamedplus
 nnoremap <Leader>ve :e $MYVIMRC<CR>
 nnoremap <Leader>vr :source $MYVIMRC<CR>
 
+" Whitespace
+"""""""""""""""""
+" show space characters
+set listchars+=space:·
+set list
+
+" highlight trailing space characters
+highlight ExtraWhitespace ctermbg=0 guibg=#e06c75
+match ExtraWhitespace /\s\+$/
+autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
+autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
+autocmd InsertLeave * match ExtraWhitespace /\s\+$/
+autocmd BufWinLeave * call clearmatches()
+
+" trim trailing space on save
+function! TrimWhitespace()
+  if !&binary && &filetype != 'diff'
+    let l:save = winsaveview()
+    keeppatterns %s/\s\+$//e
+    call winrestview(l:save)
+  endif
+endfun
+
+autocmd BufWritePre,FileWritePre,FileAppendPre,FilterWritePre *
+  \ :call TrimWhitespace()
+
 " Tabs and Spaces
 """""""""""""""""
 set tabstop=2
@@ -73,8 +98,7 @@ set nu
 set relativenumber
 
 set colorcolumn=80,120
-highlight ColorColumn ctermbg=0 guibg=lightgrey
-
+highlight ColorColumn ctermbg=0 guibg=#313640
 
 " Searching
 """""""""""
