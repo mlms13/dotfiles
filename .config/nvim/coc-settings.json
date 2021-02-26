@@ -2,7 +2,10 @@
   "coc.preferences.formatOnSaveFiletypes": [
     "css",
     "js",
-    "json"
+    "json",
+    "purescript",
+    "typescript",
+    "typescriptreact",
   ],
   "languageserver": {
     "purescript": {
