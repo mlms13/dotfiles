@@ -7,16 +7,27 @@
 	default = simple
 [alias]
 	co = checkout
+  dt = difftool
+  dts = diftool --staged
 	s = status
 	c7 = rev-parse --short=7
 	m7 = rev-parse --short=7 master
 	h7 = rev-parse --short=7 HEAD
 [core]
 	autocrlf = input
-	editor = vi
+	editor = nvim
 	whitespace = cr-at-eol
 	filemode = false
 [pager]
 	branch = false
 [diff]
-	tool = vimdiff
+	tool = nvimdiff
+[difftool "nvimdiff"]
+  cmd = nvim -d $LOCAL $BASE
+[merge]
+  tool = nvimmerge
+[mergetool]
+  prompt = true
+[mergetool "nvimmerge"]
+  cmd = nvim -d $BASE $LOCAL $REMOTE $MERGED -c '$wincmd w' -c 'wincmd J'
+
