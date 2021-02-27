@@ -5,6 +5,15 @@ export ZSH="$HOME/.oh-my-zsh"
 
 # ZSH_THEME="robbyrussell"
 
+sourceIfExists() {
+  local file_path="${1:-}"
+  if [[ -f "$file_path" ]]; then
+    source "$file_path"
+  else
+    echo "Warning: not sourcing '$file_path' - does not exist"
+  fi
+}
+
 ###############################################################################
 # Plugins and plugin config
 ###############################################################################
@@ -58,3 +67,9 @@ export PATH=./node_modules/.bin:$HOME/.local/bin:$PATH
 # fnm and npm
 export PATH="$HOME/.fnm:$HOME/.npm-global/bin:$PATH"
 eval "$(fnm env --multi)"
+
+# haskell
+sourceIfExists "$HOME/.ghcup/env"
+
+# nix
+export PATH="$PATH:/nix/var/nix/profiles/default/bin"
