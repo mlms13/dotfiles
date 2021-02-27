@@ -45,6 +45,22 @@ colorscheme onehalfdark
 let g:airline_theme='onehalfdark'
 " also worth trying? https://github.com/ghifarit53/tokyonight-vim
 
+" onehalfdark uses the same color for Search and IncSearch
+" https://github.com/sonph/onehalf/issues/21
+highlight! link Search PMenu
+highlight! link IncSearch PMenuSel
+
+" better vimdiff colors
+" highlight DiffAdd    cterm=bold ctermfg=10 ctermbg=17 gui=none guifg=bg guibg=#1f3218
+" highlight DiffDelete cterm=bold ctermfg=10 ctermbg=17 gui=none guifg=bg guibg=#aacc33
+" highlight DiffChange cterm=bold ctermfg=10 ctermbg=17 gui=none guifg=bg guibg=Green
+" highlight DiffText   cterm=bold ctermfg=10 ctermbg=88 gui=none guifg=bg guibg=Green
+
+" hi DiffAdd        ctermfg=NONE ctermbg=24 guifg=#f8f8f2 guibg=#13354a
+" hi DiffChange     term=bold ctermbg=238 guifg=#89807d guibg=#4c4745
+" hi DiffDelete     ctermfg=125 ctermbg=125 guifg=#960050 guibg=#1e0010
+" hi DiffText       term=reverse cterm=bold ctermfg=0 ctermbg=202 gui=bold guifg=#ad81ff guibg=#4a7800
+
 " Clipboard
 """""""""""
 set clipboard+=unnamedplus
