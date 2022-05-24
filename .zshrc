@@ -51,10 +51,6 @@ if [[ "$OSTYPE" == "linux-gnu"* ]]; then
   alias open="xdg-open"
 fi
 
-if [[ "$OSTYPE" == "darwin"* ]]; then
-  alias tree="find . -print | sed -e 's;[^/]*/;|____;g;s;____|;|;g'"
-fi
-
 alias vim="nvim"
 alias vi="nvim"
 alias vimdiff='nvim -d'
@@ -67,6 +63,8 @@ export PATH=./node_modules/.bin:$HOME/.local/bin:$PATH
 # fnm and npm
 export PATH="$HOME/.fnm:$HOME/.npm-global/bin:$PATH"
 eval "$(fnm env --multi)"
+
+fnm use v14.17.6
 
 # haskell
 sourceIfExists "$HOME/.ghcup/env"
