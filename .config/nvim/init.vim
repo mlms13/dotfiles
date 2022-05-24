@@ -5,6 +5,8 @@
 imap jk <Esc>
 imap kj <Esc>
 
+let mapleader = " "
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Plugins (load first)
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -141,8 +143,15 @@ set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50
 " Plugin-specific config
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
+" search files, buffers, commands, and project text
+nnoremap <silent> <leader>ff :FZF<CR>
 nnoremap <C-p> :FZF<CR>
 
+nnoremap <silent> <leader>fc :Commands<CR>
+nnoremap <silent> <leader>fb :Buffers<CR>
+nnoremap <silent> <leader>fs :Rg<CR>
+
+" language server types, hints, definitions
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
