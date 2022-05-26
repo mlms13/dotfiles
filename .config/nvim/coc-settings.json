@@ -5,7 +5,7 @@
     "json",
     "purescript",
     "typescript",
-    "typescriptreact",
+    "typescriptreact"
   ],
   "languageserver": {
     "purescript": {
