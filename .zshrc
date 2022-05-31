@@ -31,7 +31,7 @@ plugins=(
 source $ZSH/oh-my-zsh.sh
 
 fpath=( "$HOME/.zsh/functions" $fpath )
-fpath+=("$HOME/.npm-global/lib/node_modules/pure-prompt/functions")
+fpath+=("$HOME/.zsh/pure")
 
 autoload -U promptinit; promptinit
 prompt pure
