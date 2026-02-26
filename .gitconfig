@@ -18,6 +18,7 @@
 	editor = nvim
 	whitespace = cr-at-eol
 	filemode = false
+	pager = delta
 [pager]
 	branch = false
 [diff]
@@ -33,3 +34,13 @@
 
 [pull]
 	ff = only
+[init]
+	defaultBranch = main
+[interactive]
+	diffFilter = delta --color-only
+[delta]
+	navigate = true
+	line-numbers = true
+	features = side-by-side line-numbers decorations
+[delta "decorations"]
+	commit-decoration-style = bold yellow box
