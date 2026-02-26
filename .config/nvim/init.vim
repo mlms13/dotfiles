@@ -34,6 +34,8 @@ Plug 'christoomey/vim-tmux-navigator'
 
 Plug 'sonph/onehalf', { 'rtp': 'vim' }
 
+Plug 'dracula/vim', { 'as': 'dracula' }
+
 call plug#end()
 
 " Theme
@@ -44,7 +46,10 @@ set termguicolors
 syntax on
 set t_Co=256
 set cursorline
-colorscheme onehalfdark
+
+" colorscheme onehalfdark
+colorscheme dracula
+
 let g:airline_theme='onehalfdark'
 " also worth trying? https://github.com/ghifarit53/tokyonight-vim
 
