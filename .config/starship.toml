@@ -1,0 +1,9 @@
+# Added for editor completions
+"$schema" = 'https://starship.rs/config-schema.json'
+
+# Add newline before new prompts
+add_newline = true
+
+# But keep the input on the same line as the prompt
+[line_break]
+disabled = true

@@ -1,0 +1,7 @@
+# This is the configuration file for Ghostty.
+
+# Quick Terminal Shortcut
+keybind = global:ctrl+option+space=toggle_quick_terminal
+
+# Colors
+theme = dark:TokyoNight Night,light:TokyoNight Day

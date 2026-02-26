@@ -1,16 +1,24 @@
 ################################################################################
-# Ignore Everything (except this gitignore)
+# Ignore Most Things
 ################################################################################
 
 /*
 /.**
 
+# don't ignore this gitignore
 !.gitignore
+
+# and don't ignore the config folder (but keep ignoring everything in it)
+!/.config/
+/.config/*
 
 ################################################################################
 # Terminal and Shell
 ################################################################################
 
+!/.config/ghostty
+!/.config/ghostty/*
+!/.config/starship.toml
 !/.zshrc
 
 ################################################################################
