@@ -106,13 +106,24 @@ else
   echo "direnv not found!"
 fi
 
+# asdf
+path_prepend "${ASDF_DATA_DIR:-$HOME/.asdf}/shims"
+
 # fzf
 if command -v fzf >/dev/null 2>&1; then
   source <(fzf --zsh)
 fi
+
+# PostgreSQL
+# warning: this is Mac-specific for now
+path_prepend "/opt/homebrew/opt/libpq/bin"
+
+# Rancher Desktop (OSS Docker-like)
+path_prepend "/Users/michael/.rd/bin"
 
 ################################################################################
 # Secrets
 ################################################################################
 
 source_if_exists "$HOME/.zsh/secrets.zsh"
+
