@@ -110,7 +110,6 @@ else
 fi
 
 # pyenv
-
 export PYENV_ROOT="$HOME/.pyenv"
 path_prepend "$PYENV_ROOT/bin"
 
@@ -123,7 +122,7 @@ fi
 path_prepend "${ASDF_DATA_DIR:-$HOME/.asdf}/shims"
 
 # nix
-path_prepend "nix/var/nix/profiles/default/bin"
+path_prepend "/nix/var/nix/profiles/default/bin"
 
 # fzf
 if command -v fzf >/dev/null 2>&1; then
