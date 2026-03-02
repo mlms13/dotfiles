@@ -1,5 +1,9 @@
 # This is the configuration file for Ghostty.
 
+# Cursor settings
+# Keep box (not bar) in vi insert mode
+shell-integration-features = no-cursor
+
 # Quick Terminal Shortcut
 keybind = global:ctrl+option+space=toggle_quick_terminal
 
