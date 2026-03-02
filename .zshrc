@@ -14,7 +14,7 @@ path_prepend() {
 # Plugin Management (antigen and omz config)
 ################################################################################
 
-source $HOME/.zsh/.antigen.zsh
+source $HOME/.zsh/antigen.zsh
 
 antigen use oh-my-zsh
 antigen bundle git
@@ -79,7 +79,6 @@ fi
 ################################################################################
 
 # Node
-
 path_prepend "$HOME/.fnm"
 path_prepend "$HOME/.npm-global/bin"
 
@@ -88,7 +87,6 @@ if command -v fnm >/dev/null 2>&1; then
 fi
 
 # OCaml
-
 if command -v opam >/dev/null 2>&1; then
   eval $(opam env)
 fi
@@ -96,15 +94,12 @@ fi
 source_if_exists "$HOME/.opam/opam-init/init.zsh"
 
 # Haskell
-
 source_if_exists "$HOME/.ghcup/env"
 
 # Rust
-
 source_if_exists "$HOME/.cargo/env"
 
 # Python
-
 if command -v direnv >/dev/null 2>&1; then
   eval "$(direnv hook zsh)"
 else
@@ -112,7 +107,12 @@ else
 fi
 
 # fzf
-
 if command -v fzf >/dev/null 2>&1; then
   source <(fzf --zsh)
 fi
+
+################################################################################
+# Secrets
+################################################################################
+
+source_if_exists "$HOME/.zsh/secrets.zsh"

@@ -21,6 +21,16 @@
 !/.config/starship.toml
 !/.zshrc
 
+# un-ignore any special zsh scripts
+!/.zsh/
+!/.zsh/*
+
+# ...but keep ignoring secrets
+/.zsh/secrets.zsh
+
+# ...and keep ignoring antigen (which should be installed separately)
+/.zsh/antigen.zsh
+
 ################################################################################
 # Vim and Tmux
 ################################################################################
