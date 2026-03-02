@@ -109,6 +109,16 @@ else
   echo "direnv not found!"
 fi
 
+# pyenv
+
+export PYENV_ROOT="$HOME/.pyenv"
+path_prepend "$PYENV_ROOT/bin"
+
+if command -v pyenv >/dev/null 2>&1; then
+  eval "$(pyenv init -)"
+  eval "$(pyenv virtualenv-init -)"
+fi
+
 # asdf
 path_prepend "${ASDF_DATA_DIR:-$HOME/.asdf}/shims"
 
