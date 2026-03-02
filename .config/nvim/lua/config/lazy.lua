@@ -14,6 +14,18 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
+-- Compatibility shim: LazyVim expects mason-lspconfig.mappings.get_mason_map() but
+-- mason-lspconfig uses require("mason-lspconfig").get_mappings() instead.
+-- This preload provides the old API when LazyVim's LSP config runs.
+package.preload["mason-lspconfig.mappings"] = function()
+  local server = require("mason-lspconfig.mappings.server")
+  return {
+    get_mason_map = function()
+      return { lspconfig_to_package = server.lspconfig_to_package }
+    end,
+  }
+end
+
 require("lazy").setup({
   spec = {
     -- add LazyVim and import its plugins
