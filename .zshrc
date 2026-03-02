@@ -72,6 +72,9 @@ fi
 
 if [[ "$OSTYPE" == "darwin"* ]]; then
   path_prepend /opt/homebrew/bin
+
+  # PostgreSQL (MacOS-specific path)
+  path_prepend "/opt/homebrew/opt/libpq/bin"
 fi
 
 ################################################################################
@@ -113,10 +116,6 @@ path_prepend "${ASDF_DATA_DIR:-$HOME/.asdf}/shims"
 if command -v fzf >/dev/null 2>&1; then
   source <(fzf --zsh)
 fi
-
-# PostgreSQL
-# warning: this is Mac-specific for now
-path_prepend "/opt/homebrew/opt/libpq/bin"
 
 # Rancher Desktop (OSS Docker-like)
 path_prepend "/Users/michael/.rd/bin"
