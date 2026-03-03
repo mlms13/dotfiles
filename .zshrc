@@ -19,6 +19,7 @@ source $HOME/.zsh/antigen.zsh
 antigen use oh-my-zsh
 antigen bundle git
 antigen bundle command-not-found
+antigen bundle common-aliases
 antigen bundle zsh-users/zsh-autosuggestions
 antigen bundle zsh-users/zsh-syntax-highlighting
 

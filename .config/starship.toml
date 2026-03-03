@@ -8,6 +8,9 @@ add_newline = true
 [line_break]
 disabled = true
 
+[aws]
+disabled = true
+
 [bun]
 format = "[$symbol]($style)"
 
@@ -42,7 +45,8 @@ format = "[$symbol]($style)"
 format = "[$symbol]($style)"
 
 [dotnet]
-format = "[$symbol(🎯 $tfm )]($style)"
+disabled = true
+# format = "[$symbol(🎯 $tfm )]($style)"
 
 [elixir]
 format = '[$symbol]($style)'
