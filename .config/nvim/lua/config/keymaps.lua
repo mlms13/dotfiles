@@ -3,3 +3,7 @@
 -- Add any additional keymaps here
 vim.keymap.set("i", "jk", "<ESC>", { silent = true })
 vim.keymap.set("i", "kj", "<ESC>", { silent = true })
+
+-- Unbind LazyVim's default <leader>gg (LazyGit) and hand it to Neogit
+pcall(vim.keymap.del, "n", "<leader>gg")
+vim.keymap.set("n", "<leader>gg", "<cmd>Neogit<cr>", { desc = "Show Neogit UI" })
