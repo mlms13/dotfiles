@@ -18,6 +18,21 @@ return {
     -- Smooth animated fades (tint.nvim switched instantly; vimade can tween).
     recipe = { "default", { animate = true } },
 
+    -- Pull window backgrounds DARKER when the whole editor loses focus, to match
+    -- the tmux pane darkening (window-style -> mantle). vimade sets the global
+    -- `vimade_fade_active` flag during focus-loss fading, so we only apply the bg
+    -- tint then; ordinary inactive splits keep just the fadelevel fade above.
+    -- tint-as-a-function is re-resolved every tick and cache-keyed on the colors
+    -- it returns, so reading vim.g here recomputes correctly (no `id` needed).
+    -- rgb is catppuccin mocha 'crust' (#11111b, the darkest base); use {24,24,37}
+    -- (mantle) to match tmux exactly, or raise intensity (0..1) for a darker pull.
+    tint = function()
+      if vim.g.vimade_fade_active == 1 then
+        return { bg = { rgb = { 17, 17, 27 }, intensity = 0.5 } }
+      end
+      return {}
+    end,
+
     -- vimade's default blocklist already excludes floats, Pmenu, and prompt
     -- buffers. Rules merge by name with the defaults (user wins), so this only
     -- ADDS a rule to also keep terminal buffers at full brightness.
