@@ -33,11 +33,40 @@ return {
       return {}
     end,
 
+    -- When CodeDiff has focus, treat all as a single group. A window counts as
+    -- CodeDiff's if EITHER condition holds:
+    --   * buf_name contains "codediff" (catches sidebar and git codediff:///)
+    --   * window carries `codediff_restore` flag (catches "Additions" pane)
+    link = {
+      codediff = function(win, active)
+        local function is_codediff(w)
+          return (w.buf_name and string.find(string.lower(w.buf_name), "codediff") ~= nil)
+            or w.win_vars.codediff_restore ~= nil
+        end
+        return is_codediff(win) and is_codediff(active)
+      end,
+    },
+
     -- vimade's default blocklist already excludes floats, Pmenu, and prompt
     -- buffers. Rules merge by name with the defaults (user wins), so this only
     -- ADDS a rule to also keep terminal buffers at full brightness.
     blocklist = {
       terminal = { buf_opts = { buftype = { "terminal" } } },
+
+      -- Snacks explorer is a floating window, and by default we don't fade
+      -- floating windows, but we we do want to fade the exlporer (but only when
+      -- all of vim loses focus, not just the explorer)
+      block_inactive_floats = function(win, active)
+        if win.win_config.relative == "" then
+          return false -- not a float; nothing for this rule to block
+        end
+        local ft = win.buf_opts.filetype
+        if vim.g.vimade_fade_active == 1 and ft and ft:match("^snacks_picker") then
+          return false -- vim lost focus: allow the explorer to dim with the editor
+        end
+        -- Stock behavior: block inactive floats (and terminal floats).
+        return (win ~= active or win.buf_opts.buftype == "terminal") and true or false
+      end,
     },
   },
 }
