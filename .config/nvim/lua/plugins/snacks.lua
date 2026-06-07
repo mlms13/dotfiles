@@ -1,49 +1,55 @@
+-- macOS filesystem noise we never want to see anywhere
+local macos = {
+  ".DS_Store",
+  ".localized",
+  ".Spotlight-V100",
+  ".Trashes",
+  ".fseventsd",
+  ".TemporaryItems",
+  "__MACOSX",
+}
+
+-- Heavy/generated dirs: still visible in the explorer tree, but not worth
+-- indexing or grepping through in the picker
+local heavy = {
+  "node_modules",
+  ".git",
+  "dist",
+  "build",
+  ".next",
+  ".cache",
+}
+
+-- macos + heavy, without mutating either list
+local function macos_and_heavy()
+  return vim.list_extend(vim.list_extend({}, macos), heavy)
+end
+
 return {
   "folke/snacks.nvim",
   opts = {
     picker = {
       sources = {
-        -- Show hidden files in the sidebar explorer, but exclude macOS noise
+        -- Explorer shows everything (incl. gitignored node_modules, .env),
+        -- minus pure macOS noise
         explorer = {
           hidden = true,
           ignored = true,
-          exclude = {
-            ".DS_Store",
-            ".localized",
-            ".Spotlight-V100",
-            ".Trashes",
-            ".fseventsd",
-            ".TemporaryItems",
-            "__MACOSX",
-          },
+          exclude = macos,
         },
-        -- Show hidden files in <leader>ff / find files, but exclude macOS noise
+        -- <leader>ff: index hidden + gitignored files (so .env is findable),
+        -- but prune heavy dirs like node_modules so they're never walked
         files = {
           hidden = true,
           ignored = true,
-          exclude = {
-            ".DS_Store",
-            ".localized",
-            ".Spotlight-V100",
-            ".Trashes",
-            ".fseventsd",
-            ".TemporaryItems",
-            "__MACOSX",
-          },
+          exclude = macos_and_heavy(),
         },
-        -- Show hidden files in grep (<leader>sg etc.), but exclude macOS noise
+        -- grep (<leader>sg etc.): same idea — search hidden/gitignored files,
+        -- but never grep into node_modules and friends
         grep = {
           hidden = true,
           ignored = true,
-          exclude = {
-            ".DS_Store",
-            ".localized",
-            ".Spotlight-V100",
-            ".Trashes",
-            ".fseventsd",
-            ".TemporaryItems",
-            "__MACOSX",
-          },
+          exclude = macos_and_heavy(),
         },
       },
     },
