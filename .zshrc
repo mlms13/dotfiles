@@ -87,7 +87,7 @@ path_prepend "$HOME/.fnm"
 path_prepend "$HOME/.npm-global/bin"
 
 if command -v fnm >/dev/null 2>&1; then
-  eval `fnm env`
+  eval "$(fnm env --use-on-cd)"
 fi
 
 # OCaml
