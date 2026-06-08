@@ -28,6 +28,15 @@ return {
     -- (mantle) to match tmux exactly, or raise intensity (0..1) for a darker pull.
     tint = function()
       if vim.g.vimade_fade_active == 1 then
+        -- Pull backgrounds toward the dim target. In dark mode that's near-black
+        -- (mocha crust); in LIGHT mode pulling toward black looked way too dark,
+        -- so pull toward a light grey instead and ease off the intensity -- the
+        -- analog of tmux's mantle dim, which only nudges the bg a shade.
+        if vim.o.background == "light" then
+          -- {230,233,239} = catppuccin latte 'mantle' (#e6e9ef); gentle so it
+          -- still reads as "inactive" without going muddy on a light background.
+          return { bg = { rgb = { 230, 233, 239 }, intensity = 0.25 } }
+        end
         return { bg = { rgb = { 17, 17, 27 }, intensity = 0.5 } }
       end
       return {}
