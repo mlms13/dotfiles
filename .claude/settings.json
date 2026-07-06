@@ -1,0 +1,69 @@
+{
+  "permissions": {
+    "allow": [
+      "Read(//Users/michael/.agents/**)",
+      "Read(//Users/michael/.claude/**)",
+      "Bash(command -v *)",
+      "Bash(echo \"* $?\")",
+      "Bash(fd --version)",
+      "Bash(gh pr view *)",
+      "Bash(gh pr diff *)",
+      "Bash(gh pr checks *)",
+      "Bash(gh run view *)",
+      "Bash(git --version)",
+      "Bash(git check-ignore:*)",
+      "Bash(git --no-pager diff:*)",
+      "Bash(git diff:*)",
+      "Bash(git log:*)",
+      "Bash(git status:*)",
+      "Bash(jq --version)",
+      "Bash(just --list)",
+      "Bash(node --version)",
+      "Bash(pnpm exec prettier:*)",
+      "Bash(pnpm run:*)",
+      "Bash(tilt get *)",
+      "Bash(tilt logs *)",
+      "Bash(tmux list-panes *)",
+      "Bash(tmux list-windows *)",
+      "Bash(xargs cat)",
+      "Bash(xargs ls -la)",
+      "Bash(xargs ls -lh)",
+      "mcp__claude_ai_Google_Calendar__list_events",
+      "mcp__claude_ai_Linear__get_issue",
+      "mcp__claude_ai_Linear__get_project",
+      "mcp__claude_ai_Linear__get_status_updates",
+      "mcp__claude_ai_Linear__list_comments",
+      "mcp__claude_ai_Linear__list_issue_labels",
+      "mcp__claude_ai_Linear__list_issue_statuses",
+      "mcp__claude_ai_Linear__list_issues",
+      "mcp__claude_ai_Linear__list_milestones",
+      "mcp__claude_ai_Linear__list_projects",
+      "mcp__claude_ai_Linear__list_teams",
+      "mcp__claude_ai_Linear__list_users"
+    ],
+    "ask": [
+      "Edit(**/package.json)",
+      "Write(**/package.json)",
+      "MultiEdit(**/package.json)"
+    ]
+  },
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node /Users/michael/.claude/hooks/prefer-scripts.mjs"
+          },
+          {
+            "type": "command",
+            "command": "node /Users/michael/.claude/hooks/prefer-gh-native.mjs"
+          }
+        ]
+      }
+    ]
+  },
+  "effortLevel": "xhigh",
+  "theme": "auto"
+}
