@@ -18,11 +18,33 @@ local heavy = {
   "build",
   ".next",
   ".cache",
+  ".venv",
+  "venv",
+  "__pycache__",
+  ".pytest_cache",
+  ".mypy_cache",
+  ".ruff_cache",
 }
 
--- macos + heavy, without mutating either list
-local function macos_and_heavy()
-  return vim.list_extend(vim.list_extend({}, macos), heavy)
+-- when opening vim in ~ (e.g. to edit config files), ignore heavy dirs with
+-- nothing worth editing
+local home = {
+  "Library/Caches",
+  "Library/Containers",
+  "Library/Developer",
+  "Library/pnpm",
+  ".asdf",
+  ".rustup",
+  ".npm",
+}
+
+-- Everything the files/grep pickers should never walk: macOS noise + heavy
+-- project dirs + heavy home dirs.
+local function picker_exclude()
+  local out = vim.list_extend({}, macos)
+  vim.list_extend(out, heavy)
+  vim.list_extend(out, home)
+  return out
 end
 
 -- Move focus out of a floating picker window toward `tmux_flag` (e.g. "-L").
@@ -79,14 +101,14 @@ return {
         files = {
           hidden = true,
           ignored = true,
-          exclude = macos_and_heavy(),
+          exclude = picker_exclude(),
         },
         -- grep (<leader>sg etc.): same idea — search hidden/gitignored files,
         -- but never grep into node_modules and friends
         grep = {
           hidden = true,
           ignored = true,
-          exclude = macos_and_heavy(),
+          exclude = picker_exclude(),
         },
       },
     },
