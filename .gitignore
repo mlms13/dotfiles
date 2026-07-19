@@ -41,8 +41,8 @@
 !.tmux.conf
 
 !/.tmux/
-!/.tmux/custom
 !/.tmux/custom/**
+/.tmux/plugins/**
 
 # LazyVim ships with a markdown linter, and we have some global config to make
 # it less picky about line length for wide tables
