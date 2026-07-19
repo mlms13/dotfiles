@@ -44,3 +44,9 @@
 	features = side-by-side line-numbers decorations
 [delta "decorations"]
 	commit-decoration-style = bold yellow box
+[credential "https://github.com"]
+	helper = 
+	helper = !/opt/homebrew/bin/gh auth git-credential
+[credential "https://gist.github.com"]
+	helper = 
+	helper = !/opt/homebrew/bin/gh auth git-credential
