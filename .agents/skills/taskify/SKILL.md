@@ -47,18 +47,18 @@ Brevity and readability beat completeness. Optimize for "at a glance."
 Flat (when < 7 items):
 
 ```markdown
-# pro-237 — scaffold eval tab
+# abc-123 — scaffold settings tab
 
-- [x] Add flag to ClientFlag
-- [x] Add flag to local features.yml
+- [x] Add flag to client flag enum
+- [x] Add flag to local features config
 - [x] Codegen with flag
-- [ ] Wire flag in flipt-features repo
+- [ ] Wire flag in flag-config repo
 ```
 
 Sectioned (for longer task lists):
 
 ```markdown
-# pro-234 — chip opens override dropdown
+# abc-124 — chip opens override dropdown
 
 ## Chip plumbing
 

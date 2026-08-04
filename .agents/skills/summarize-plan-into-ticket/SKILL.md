@@ -37,7 +37,7 @@ Work through a single plan at a time.
 
 ### 1. Pair the plan file to the remote ticket
 
-Filename may encode the ID (e.g. `PRO-137-PLAN.md` → PRO-137). If not, read the
+Filename may encode the ID (e.g. `ABC-137-PLAN.md` → ABC-137). If not, read the
 plan's first lines — they typically link the ticket. If still ambiguous, ask.
 
 ### 2. Check ticket status FIRST — bail early if not complete

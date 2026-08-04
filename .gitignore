@@ -60,8 +60,14 @@
 # Vendor agent skills into the repo so a fresh checkout has them (the setup
 # runner just ensures the ~/.claude/skills symlink). Drop these lines and track
 # only .skill-lock.json if you'd rather restore skills from the lock instead.
+#
+# Un-ignore narrowly: .agents/ is tool-managed, so anything a tool drops in
+# later (auth caches, MCP config) stays ignored unless we opt it in here.
 !/.agents/
-!/.agents/**
+/.agents/*
+!/.agents/.skill-lock.json
+!/.agents/skills/
+!/.agents/skills/**
 
 ################################################################################
 # Machine setup runner
@@ -88,10 +94,27 @@
 
 
 ################################################################################
-# Noise
+# Never Track
 ################################################################################
 
-# Last, so it beats every un-ignore rule above (later rules win). Without this,
-# .DS_Store leaks out of any un-ignored tree — .agents/skills/ already had one.
+# This block is last on purpose: later rules win, so these beat every un-ignore
+# above and apply inside every un-ignored tree.
+
+# Without this, .DS_Store leaks out of any un-ignored tree — .agents/skills/
+# already had one.
 .DS_Store
+
+# Belt and braces for a public repo. The un-ignore rules above are recursive in
+# places (setup/, .agents/skills/), so secret-shaped files could otherwise be
+# swept in by `git add -A` without anyone noticing.
+.env
+.env.*
+*.pem
+*.key
+*.p12
+id_rsa*
+id_ed25519*
+credentials.json
+secrets.*
+*_secret*
 
