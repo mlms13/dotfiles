@@ -57,6 +57,19 @@
 !/.claude/hooks
 !/.claude/hooks/**
 
+# Vendor agent skills into the repo so a fresh checkout has them (the setup
+# runner just ensures the ~/.claude/skills symlink). Drop these lines and track
+# only .skill-lock.json if you'd rather restore skills from the lock instead.
+!/.agents/
+!/.agents/**
+
+################################################################################
+# Machine setup runner
+################################################################################
+
+!/setup/
+!/setup/**
+
 ################################################################################
 # Window Management
 ################################################################################
@@ -72,4 +85,13 @@
 ################################################################################
 
 !.gitconfig
+
+
+################################################################################
+# Noise
+################################################################################
+
+# Last, so it beats every un-ignore rule above (later rules win). Without this,
+# .DS_Store leaks out of any un-ignored tree — .agents/skills/ already had one.
+.DS_Store
 
