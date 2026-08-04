@@ -6,9 +6,10 @@
       "Bash(command -v *)",
       "Bash(echo \"* $?\")",
       "Bash(fd --version)",
-      "Bash(gh pr view *)",
-      "Bash(gh pr diff *)",
       "Bash(gh pr checks *)",
+      "Bash(gh pr diff *)",
+      "Bash(gh pr list *)",
+      "Bash(gh pr view *)",
       "Bash(gh run view *)",
       "Bash(git --version)",
       "Bash(git check-ignore:*)",
@@ -19,15 +20,14 @@
       "Bash(jq --version)",
       "Bash(just --list)",
       "Bash(node --version)",
+      "Bash(pnpm --version:*)",
       "Bash(pnpm exec prettier:*)",
       "Bash(pnpm run:*)",
+      "Bash(rg:*)",
       "Bash(tilt get *)",
       "Bash(tilt logs *)",
       "Bash(tmux list-panes *)",
       "Bash(tmux list-windows *)",
-      "Bash(xargs cat)",
-      "Bash(xargs ls -la)",
-      "Bash(xargs ls -lh)",
       "mcp__claude_ai_Google_Calendar__list_events",
       "mcp__claude_ai_Linear__get_issue",
       "mcp__claude_ai_Linear__get_project",
@@ -47,6 +47,7 @@
       "MultiEdit(**/package.json)"
     ]
   },
+  "model": "opus[1m]",
   "hooks": {
     "PreToolUse": [
       {
@@ -64,6 +65,10 @@
       }
     ]
   },
+  "enabledPlugins": {
+    "figma@claude-plugins-official": true
+  },
   "effortLevel": "xhigh",
-  "theme": "auto"
+  "theme": "auto",
+  "editorMode": "vim"
 }
