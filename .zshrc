@@ -90,6 +90,15 @@ if command -v fnm >/dev/null 2>&1; then
   eval "$(fnm env --use-on-cd)"
 fi
 
+# Bun
+export BUN_INSTALL="$HOME/.bun"
+path_prepend "$BUN_INSTALL/bin"
+
+# Keep the marker comment on the next line verbatim: `bun upgrade` will append
+# its own block to .zshrc unless it finds that comment
+# bun completions
+source_if_exists "$BUN_INSTALL/_bun"
+
 # OCaml
 if command -v opam >/dev/null 2>&1; then
   eval $(opam env)
