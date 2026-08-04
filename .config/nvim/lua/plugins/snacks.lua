@@ -9,6 +9,12 @@ local macos = {
   "__MACOSX",
 }
 
+-- Claude Code worktrees: each one is a full checkout of the same repo, so each
+-- file shows up once per worktree in the picker.
+local worktrees = {
+  "**/.claude/worktrees",
+}
+
 -- Heavy/generated dirs: still visible in the explorer tree, but not worth
 -- indexing or grepping through in the picker
 local heavy = {
@@ -38,10 +44,17 @@ local home = {
   ".npm",
 }
 
--- Everything the files/grep pickers should never walk: macOS noise + heavy
--- project dirs + heavy home dirs.
-local function picker_exclude()
+-- Never worth showing anywhere, explorer included.
+local function always_exclude()
   local out = vim.list_extend({}, macos)
+  vim.list_extend(out, worktrees)
+  return out
+end
+
+-- Everything the files/grep pickers should never walk: the always-hidden set +
+-- heavy project dirs + heavy home dirs.
+local function picker_exclude()
+  local out = always_exclude()
   vim.list_extend(out, heavy)
   vim.list_extend(out, home)
   return out
@@ -64,11 +77,11 @@ return {
     picker = {
       sources = {
         -- Explorer shows everything (incl. gitignored node_modules, .env),
-        -- minus pure macOS noise
+        -- minus macOS noise and worktree copies of the repo
         explorer = {
           hidden = true,
           ignored = true,
-          exclude = macos,
+          exclude = always_exclude(),
 
           -- Allow <c-hjkl> to pass through to tmux (like they do in normal
           -- splits). The catch: the explorer focuses a *floating* picker popup,
