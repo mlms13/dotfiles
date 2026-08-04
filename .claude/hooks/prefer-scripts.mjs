@@ -32,6 +32,9 @@ function deny(reason) {
 const DISCOURAGED = new RegExp(boundary + String.raw`(?:npx|pnpx|pnpm\s+exec|pnpm\s+dlx|yarn\s+dlx)(?:\s|$)`);
 const ALLOWED = [
   new RegExp(boundary + String.raw`pnpm\s+exec\s+prettier(?:\s|$)`), // format single files
+  // ctx7 (find-docs skill), any version — deliberately NOT in permissions.allow,
+  // so every run still goes through the permission prompt for human review.
+  new RegExp(boundary + String.raw`pnpm\s+dlx\s+ctx7(?:@\S+)?(?:\s|$)`),
 ];
 if (DISCOURAGED.test(command) && !ALLOWED.some((re) => re.test(command))) {
   deny(
