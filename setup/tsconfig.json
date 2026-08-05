@@ -11,5 +11,5 @@
     "verbatimModuleSyntax": true,
     "skipLibCheck": true
   },
-  "include": ["config.ts", "bundles/**/*.ts"]
+  "include": ["config.ts", "bundles/**/*.ts", "work-private*.ts"]
 }

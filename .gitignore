@@ -80,6 +80,9 @@
 /setup/node_modules/
 /setup/bun.lock
 
+# Employer-specific catalog, not for sync
+/setup/work-private.ts
+
 ################################################################################
 # Window Management
 ################################################################################

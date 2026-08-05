@@ -11,6 +11,7 @@ export const core = (id: string, { pkg, bundle }: Toolkit): Bundle =>
     // Apple's /usr/bin/git is fine; `present` stops brew
     pkg("git", { present: { bin: "git" } }),
     pkg("git-delta", {}, "delta (git pager)"),
+    pkg("gh", {}, "gh (GitHub CLI)"),
     pkg("neovim"),
     pkg("fd"),
     pkg("ripgrep", {}, "ripgrep (rg)"),
