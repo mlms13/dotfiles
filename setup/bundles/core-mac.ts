@@ -79,6 +79,7 @@ export const coreMac = (id: string, { brew, command, bundle }: Toolkit): Bundle 
       brew.cask("cursor", { present: { path: "/Applications/Cursor.app" } }),
       brew.cask("claude", { present: { path: "/Applications/Claude.app" } }),
 
+      brew.cask("claude-code", { present: { bin: "claude" } }),
       brew.cask("obsidian", { present: { path: "/Applications/Obsidian.app" } }),
       brew.cask("spotify", { present: { path: "/Applications/Spotify.app" } }),
     ],

@@ -139,8 +139,9 @@ if command -v fzf >/dev/null 2>&1; then
   source <(fzf --zsh)
 fi
 
-# Rancher Desktop (OSS Docker-like)
+### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
 path_prepend "/Users/michael/.rd/bin"
+### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)
 
 ################################################################################
 # Secrets
