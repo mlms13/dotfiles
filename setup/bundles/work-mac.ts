@@ -8,6 +8,7 @@ export const workMac = (id: string, { brew, bundle }: Toolkit): Bundle =>
     [
       brew.cask("bitwarden", { present: { path: "/Applications/Bitwarden.app" } }),
       brew.cask("gifox", { present: { path: "/Applications/Gifox.app" } }),
+      brew.cask("slack", { present: { path: "/Applications/Slack.app" } }),
       brew.cask("rancher", {
         description: "Rancher Desktop",
         present: { path: "/Applications/Rancher Desktop.app" },
