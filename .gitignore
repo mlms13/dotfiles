@@ -52,10 +52,17 @@
 # Coding Agent Config
 ################################################################################
 
+# Un-ignore the directory, then re-ignore everything in it
 !/.claude/
+/.claude/*
+
+!/.claude/CLAUDE.md
 !/.claude/settings.json
 !/.claude/hooks
 !/.claude/hooks/**
+
+# Not ready to sync
+/.claude/hooks/redirect-gh-api.mjs
 
 # Vendor agent skills into the repo so a fresh checkout has them (the setup
 # runner just ensures the ~/.claude/skills symlink). Drop these lines and track

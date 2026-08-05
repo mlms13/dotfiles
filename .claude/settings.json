@@ -1,25 +1,39 @@
 {
   "permissions": {
     "allow": [
-      "Read(//Users/michael/.agents/**)",
-      "Read(//Users/michael/.claude/**)",
+      "Read(~/.agents/**)",
+      "Read(~/.claude/**)",
       "Bash(command -v *)",
       "Bash(echo \"* $?\")",
       "Bash(fd --version)",
+      "Bash(gh auth status)",
+      "Bash(gh auth status --active)",
+      "Bash(gh issue list *)",
+      "Bash(gh issue view *)",
+      "Bash(gh label list *)",
       "Bash(gh pr checks *)",
       "Bash(gh pr diff *)",
       "Bash(gh pr list *)",
       "Bash(gh pr view *)",
+      "Bash(gh repo view *)",
+      "Bash(gh run list *)",
       "Bash(gh run view *)",
+      "Bash(gh search issues *)",
       "Bash(git --version)",
-      "Bash(git check-ignore:*)",
-      "Bash(git --no-pager diff:*)",
-      "Bash(git diff:*)",
-      "Bash(git log:*)",
-      "Bash(git status:*)",
+      "Bash(git check-ignore *)",
+      "Bash(git --no-pager diff *)",
+      "Bash(git diff *)",
+      "Bash(git fetch origin *)",
+      "Bash(git log *)",
+      "Bash(git ls-remote *)",
+      "Bash(git status *)",
+      "Bash(git worktree list *)",
       "Bash(jq --version)",
       "Bash(just --list)",
       "Bash(node --version)",
+      "Bash(npm org ls *)",
+      "Bash(npm view *)",
+      "Bash(npm whoami *)",
       "Bash(pnpm --version:*)",
       "Bash(pnpm exec prettier:*)",
       "Bash(pnpm run:*)",
@@ -39,12 +53,13 @@
       "mcp__claude_ai_Linear__list_milestones",
       "mcp__claude_ai_Linear__list_projects",
       "mcp__claude_ai_Linear__list_teams",
-      "mcp__claude_ai_Linear__list_users"
+      "mcp__claude_ai_Linear__list_users",
+      "mcp__claude-design__list_projects",
+      "mcp__claude-design__list_files",
+      "mcp__claude-design__read_file"
     ],
     "ask": [
-      "Edit(**/package.json)",
-      "Write(**/package.json)",
-      "MultiEdit(**/package.json)"
+      "Edit(**/package.json)"
     ]
   },
   "model": "opus[1m]",
@@ -55,11 +70,15 @@
         "hooks": [
           {
             "type": "command",
-            "command": "node /Users/michael/.claude/hooks/prefer-scripts.mjs"
+            "command": "node \"$HOME/.claude/hooks/prefer-scripts.mjs\""
           },
           {
             "type": "command",
-            "command": "node /Users/michael/.claude/hooks/prefer-gh-native.mjs"
+            "command": "node \"$HOME/.claude/hooks/prefer-gh-native.mjs\""
+          },
+          {
+            "type": "command",
+            "command": "node \"$HOME/.claude/hooks/prefer-root-scripts.mjs\""
           }
         ]
       }
