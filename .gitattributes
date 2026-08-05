@@ -1,0 +1,11 @@
+# Plugin lockfiles are machine-local churn, not shared intent. Every machine
+# rewrites them on `:Lazy sync`, so a three-way merge just produces conflicts
+# with no correct answer. Resolve to the incoming/base side and regenerate.
+#
+# NOTE: "ours" here is the branch being merged *into* — during a `pull --rebase`
+# that is upstream, so local lockfile edits are dropped. That is intended: run
+# `:Lazy sync` in nvim afterward and commit the regenerated file on its own.
+#
+# Requires (one-time, per machine, not stored in the repo):
+#   git config merge.ours.driver true
+.config/nvim/lazy-lock.json merge=ours

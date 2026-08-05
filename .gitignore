@@ -8,6 +8,9 @@
 # don't ignore this gitignore
 !.gitignore
 
+# ...or the merge rules that keep lockfiles from conflicting on every sync
+!.gitattributes
+
 # and don't ignore the config folder (but keep ignoring everything in it)
 !/.config/
 /.config/*
