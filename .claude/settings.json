@@ -119,5 +119,6 @@
   },
   "effortLevel": "xhigh",
   "theme": "auto",
-  "editorMode": "vim"
+  "editorMode": "vim",
+  "agentPushNotifEnabled": true
 }
