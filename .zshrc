@@ -140,7 +140,7 @@ if command -v fzf >/dev/null 2>&1; then
 fi
 
 ### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
-path_prepend "/Users/michael/.rd/bin"
+export PATH="/Users/michael/.rd/bin:$PATH"
 ### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)
 
 ################################################################################
@@ -148,4 +148,3 @@ path_prepend "/Users/michael/.rd/bin"
 ################################################################################
 
 source_if_exists "$HOME/.zsh/secrets.zsh"
-
