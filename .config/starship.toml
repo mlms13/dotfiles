@@ -4,175 +4,31 @@
 # Add newline before new prompts
 add_newline = true
 
+# Explicitly list the modules to render. This is the default `$all` order with
+# every language/runtime module removed -- the icons only told us "this is a
+# node project", which we already know from the directory we're standing in.
+# Anything absent from this string is never rendered, so there's no need to
+# `disabled = true` each of the ~60 language modules individually.
+format = """
+$username$hostname$localip$shlvl$singularity\
+$kubernetes$nats\
+$directory\
+$vcsh$fossil_branch$fossil_metrics\
+$git_branch$git_commit$git_state$git_metrics$git_status\
+$hg_branch$hg_state$pijul_channel\
+$terraform\
+$guix_shell$nix_shell$conda\
+$memory_usage\
+$aws$gcloud$openstack$azure\
+$direnv$env_var$mise\
+$custom$sudo\
+$cmd_duration\
+$line_break$jobs$battery$time$status$container$netns$os$shell\
+$character"""
+
 # But keep the input on the same line as the prompt
 [line_break]
 disabled = true
 
 [aws]
 disabled = true
-
-[bun]
-format = "[$symbol]($style)"
-
-[buf]
-format = "[$symbol]($style)"
-
-[c]
-format = "[$symbol($name)]($style)"
-
-[cmake]
-format = "[$symbol]($style)"
-
-[cobol]
-format = "[$symbol]($style)"
-
-[cpp]
-format = "[$symbol($name)]($style)"
-
-[crystal]
-format = "[$symbol]($style)"
-
-[daml]
-format = "[$symbol]($style)"
-
-[dart]
-format = "[$symbol]($style)"
-
-[deno]
-format = "[$symbol]($style)"
-
-[docker_context]
-format = "[$symbol]($style)"
-
-[dotnet]
-disabled = true
-# format = "[$symbol(🎯 $tfm )]($style)"
-
-[elixir]
-format = '[$symbol]($style)'
-
-[elm]
-format = '[$symbol]($style)'
-
-[erlang]
-format = '[$symbol]($style)'
-
-[fennel]
-format = '[$symbol]($style)'
-
-[fortran]
-format = '[$symbol]($style)'
-
-[gleam]
-format = '[$symbol]($style)'
-
-[golang]
-format = '[$symbol]($style)'
-
-[gradle]
-format = '[$symbol]($style)'
-
-[haskell]
-format = '[$symbol]($style)'
-
-[haxe]
-format = '[$symbol]($style)'
-
-[helm]
-format = '[$symbol]($style)'
-
-[java]
-format = '[$symbol]($style)'
-
-[julia]
-format = '[$symbol]($style)'
-
-[kotlin]
-format = '[$symbol]($style)'
-
-[lua]
-format = '[$symbol]($style)'
-
-[meson]
-format = '[$symbol]($style)'
-
-[mojo]
-format = '[$symbol]($style)'
-
-[nim]
-format = '[$symbol]($style)'
-
-[nodejs]
-format = '[$symbol]($style)'
-
-[ocaml]
-format = '[$symbol(\($switch_indicator$switch_name\) )]($style)'
-
-[odin]
-format = '[$symbol]($style)'
-
-[opa]
-format = '[$symbol]($style)'
-
-[package]
-disabled = true
-
-[perl]
-format = '[$symbol]($style)'
-
-[php]
-format = '[$symbol]($style)'
-
-[pixi]
-format = '[$symbol($environment )]($style)'
-
-[pulumi]
-format = '[$symbol$stack]($style)'
-
-[purescript]
-format = '[$symbol]($style)'
-
-[python]
-format = '[$symbol]($style)'
-
-[quarto]
-format = '[$symbol]($style)'
-
-[raku]
-format = '[$symbol]($style)'
-
-[red]
-format = '[$symbol]($style)'
-
-[rlang]
-format = '[$symbol]($style)'
-
-[ruby]
-format = '[$symbol]($style)'
-
-[rust]
-format = '[$symbol]($style)'
-
-[scala]
-format = '[$symbol]($style)'
-
-[solidity]
-format = '[$symbol]($style)'
-
-[swift]
-format = '[$symbol]($style)'
-
-[typst]
-format = '[$symbol]($style)'
-
-[vagrant]
-format = '[$symbol]($style)'
-
-[vlang]
-format = '[$symbol]($style)'
-
-[xmake]
-format = "[$symbol]($style)"
-
-[zig]
-format = '[$symbol]($style)'
