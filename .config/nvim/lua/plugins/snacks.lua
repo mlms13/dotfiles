@@ -23,6 +23,8 @@ local heavy = {
   "dist",
   "build",
   ".next",
+  ".nx",
+  ".turbo",
   ".cache",
   ".venv",
   "venv",
