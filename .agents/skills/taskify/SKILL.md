@@ -1,8 +1,9 @@
 ---
 name: taskify
-description: Create and live-maintain an ultra-narrow markdown task checklist,
-kept in sync as work progresses. Use when the user types /taskify or asks for a
-glanceable live task list / checklist to watch while you work.
+description: >-
+  Create and live-maintain an ultra-narrow markdown task checklist, kept in
+  sync as work progresses. Use when the user types /taskify or asks for a
+  glanceable live task list or checklist to watch while you work.
 ---
 
 # taskify
