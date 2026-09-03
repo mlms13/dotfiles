@@ -13,3 +13,9 @@ theme = dark:TokyoNight Night,light:TokyoNight Day
 
 # Font
 font-family = FiraCode Nerd Font Mono
+
+# Don't prompt on close even if a process is running
+confirm-close-surface = false
+
+# Restore windows/tabs/splits after relaunch (macOS only)
+window-save-state = always
