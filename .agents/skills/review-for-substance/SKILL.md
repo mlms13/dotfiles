@@ -10,8 +10,8 @@ description:
 # Review for substance
 
 Judge whether a change does what it claims. Does the change satisfy its ticket?
-Does the implementation serve the work that follows? Is it no more complicated
-than the problem demands?
+Does the implementation support the work that follows? Is it only as complicated
+as the problem demands?
 
 ## 1. Determine what to review
 
@@ -21,14 +21,14 @@ work, then commits on this branch that aren't on the target branch
 (`git log --oneline <base>..HEAD`). Don't assume the whole branch without first
 confirming with the user.
 
-Then identify the ticket the change implements. Check the branch name, commit
-messages, and PR body; if none of those name it, ask the user.
+Then identify the ticket related to the change. Check the branch name, commit
+messages, or PR body; if none of those name it, ask the user.
 
 ## 2. Gather the intent
 
 Read the ticket's acceptance criteria before reading the diff and use those as
 the spec to judge the diff against. Find tickets unblocked by this work and read
-enough of each to understand what it needs from this work.
+enough to understand what each needs from this work.
 
 ## 3. What to look for
 
@@ -40,34 +40,32 @@ enough of each to understand what it needs from this work.
 ### Tests
 
 - Does each AC have a test that would fail if the behavior regressed?
-- Are the ticket's edge cases and unhappy paths covered? Judge appropriateness
-  against the ACs. Avoid suggesting over-testing, but ACs should be covered.
+- Are the ticket's unhappy paths covered? Don't suggest over-testing relative to
+  repo norms, but ACs should usually be covered.
 
 ### Upcoming work
 
 - Does the implementation understand the spirit of the work, and what downstream
-  work will need from it? We want to avoid planned work undoing this work.
+  work will need from it? We want to avoid future work having to undo this work.
 
 ### Simplicity
 
-- Is anything over-complicated for what the ticket asks?
-- Are there meaningful opportunities to simplify — structural ones, not
-  stylistic ones?
+- Is anything over-complicated, given what the ticket asks?
+- Are there meaningful opportunities (structural, not stylistic) to simplify?
 - Does the new code duplicate existing code? Is a refactor needed?
 
 ### Type safety
 
-- Is type safety strictly respected — no unjustified assertions, escapes to
-  `any`, or unchecked narrowing?
+- Is type safety strictly respected? No unjustified runtime assertions, escapes
+  to `any`, or unchecked narrowing?
 - Find holes in correctness that could be closed at the type level, states that
-  shouldn't be representable, runtime checks a narrower type would make
-  unnecessary...
+  shouldn't be representable, assertions a narrower type would make unnecessary.
 
 ## 4. Report
 
-A flat, numbered list of findings, ordered by file, each tied to a file and
-stating what needs to change and which concern it fails (an AC, an unblocked
-ticket, a type hole). Keep each finding to a sentence or two.
+A flat, numbered list of findings, grouped by file. Each item references a line
+or function and states what needs to change and which concern it fails (an AC,
+an unblocked ticket, a type hole). Keep each finding to a sentence or two.
 
 Findings will be handed back to the implementor. Acting on these findings takes
 valuable time. Only report findings that are worth the implementor's time.
