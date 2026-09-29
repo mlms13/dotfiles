@@ -85,6 +85,14 @@
 !/.agents/.skill-lock.json
 !/.agents/skills/
 !/.agents/skills/**
+/.agents/skills/.trash/
+
+# Shared tool sources
+!/.agents/README.md
+!/.agents/tools/
+/.agents/tools/*
+!/.agents/tools/gh-read/
+!/.agents/tools/gh-read/**
 
 ################################################################################
 # Machine setup runner
