@@ -1,4 +1,4 @@
-#!/usr/bin/env node
+#!/usr/bin/env bun
 // PreToolUse (Bash) hook. In turbo monorepos, deny `--filter` when it is used to
 // run a package script — steer to the root script instead.
 //

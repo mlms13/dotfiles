@@ -1,4 +1,4 @@
-#!/usr/bin/env node
+#!/usr/bin/env bun
 // PreToolUse (Bash) hook. Two nudges toward defined package.json scripts:
 //   1. Discourage ad-hoc `npx` / `pnpm exec` / `pnpm dlx` (with a small allowlist).
 //   2. Steer bare `pnpm <script>` -> explicit `pnpm run <script>`, but only when

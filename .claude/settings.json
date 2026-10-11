@@ -3,6 +3,7 @@
     "allow": [
       "Read(~/.agents/**)",
       "Read(~/.claude/**)",
+      "Bash(/Users/michael/.agents/bin/gh-read *)",
       "Bash(brew info *)",
       "Bash(command -v *)",
       "Bash(echo \"* $?\")",
@@ -89,10 +90,12 @@
       "mcp__plugin_figma_figma__search_design_system"
     ],
     "ask": [
-      "Edit(**/package.json)"
+      "Edit(**/package.json)",
+      "Edit(~/.agents/bin/gh-read)",
+      "Edit(~/.agents/lib/gh-read/**)",
+      "Edit(~/.agents/gh-read-repos.json)"
     ]
   },
-  "model": "fable[1m]",
   "hooks": {
     "PreToolUse": [
       {
@@ -100,15 +103,15 @@
         "hooks": [
           {
             "type": "command",
-            "command": "node \"$HOME/.claude/hooks/prefer-scripts.mjs\""
+            "command": "\"$HOME/.bun/bin/bun\" \"$HOME/.claude/hooks/prefer-scripts.mjs\""
           },
           {
             "type": "command",
-            "command": "node \"$HOME/.claude/hooks/prefer-gh-native.mjs\""
+            "command": "\"$HOME/.bun/bin/bun\" \"$HOME/.claude/hooks/prefer-gh-native.mjs\""
           },
           {
             "type": "command",
-            "command": "node \"$HOME/.claude/hooks/prefer-root-scripts.mjs\""
+            "command": "\"$HOME/.bun/bin/bun\" \"$HOME/.claude/hooks/prefer-root-scripts.mjs\""
           }
         ]
       }
@@ -117,8 +120,19 @@
   "enabledPlugins": {
     "figma@claude-plugins-official": true
   },
-  "effortLevel": "xhigh",
-  "theme": "auto",
+  "agentPushNotifEnabled": true,
   "editorMode": "vim",
-  "agentPushNotifEnabled": true
+  "model": "opus",
+  "modelSettings": {
+    "claude-opus-5-5": {
+      "effortLevel": "high"
+    }
+  },
+  "theme": "auto",
+  "skipWorkflowUsageWarning": true,
+  "statusLine": {
+    "type": "command",
+    "command": "bash ~/.claude/statusline-command.sh"
+  },
+  "syncClaudeAiSkills": false
 }

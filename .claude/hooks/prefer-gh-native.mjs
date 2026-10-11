@@ -1,4 +1,4 @@
-#!/usr/bin/env node
+#!/usr/bin/env bun
 // PreToolUse (Bash) hook. Steer READ-only `gh api <endpoint>` calls toward the
 // native `gh` subcommand that does the same read (which is allow-listed, so no
 // prompt). Writes (POST/PUT/PATCH/DELETE or -f/--field flags) are left alone to
