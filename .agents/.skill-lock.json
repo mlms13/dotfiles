@@ -27,9 +27,105 @@
       "skillFolderHash": "2f252b35aa238879afc5a230ac30343708dee0b3",
       "installedAt": "2026-05-22T18:39:48.724Z",
       "updatedAt": "2026-05-22T18:39:48.724Z"
+    },
+    "review-diagnosis": {
+      "source": "mlms13/orcish-skills",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/mlms13/orcish-skills.git",
+      "skillPath": "skills/review-diagnosis/SKILL.md",
+      "skillFolderHash": "613515c65799210be03bbf63be9ddcd404815d22",
+      "installedAt": "2026-10-11T22:57:52.144Z",
+      "updatedAt": "2026-10-11T22:57:52.144Z"
+    },
+    "review-for-completion": {
+      "source": "mlms13/orcish-skills",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/mlms13/orcish-skills.git",
+      "skillPath": "skills/review-for-completion/SKILL.md",
+      "skillFolderHash": "e61495f8f09e2952833e31c196eca772c5e53252",
+      "installedAt": "2026-10-11T22:57:52.146Z",
+      "updatedAt": "2026-10-11T22:57:52.146Z"
+    },
+    "review-for-correctness": {
+      "source": "mlms13/orcish-skills",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/mlms13/orcish-skills.git",
+      "skillPath": "skills/review-for-correctness/SKILL.md",
+      "skillFolderHash": "f6f7a2e30b25b09b00f19f02253ec6cfc5ca967d",
+      "installedAt": "2026-10-11T22:57:52.146Z",
+      "updatedAt": "2026-10-11T22:57:52.146Z"
+    },
+    "review-for-simplicity": {
+      "source": "mlms13/orcish-skills",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/mlms13/orcish-skills.git",
+      "skillPath": "skills/review-for-simplicity/SKILL.md",
+      "skillFolderHash": "e48959cc00974e1ce9a7e4b4b3afcf8acdcff2fd",
+      "installedAt": "2026-10-11T22:57:52.147Z",
+      "updatedAt": "2026-10-11T22:57:52.147Z"
+    },
+    "review-for-spirit": {
+      "source": "mlms13/orcish-skills",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/mlms13/orcish-skills.git",
+      "skillPath": "skills/review-for-spirit/SKILL.md",
+      "skillFolderHash": "10dfc830f486cfc5ec7d2b2300eab47007a41f86",
+      "installedAt": "2026-10-11T22:57:52.147Z",
+      "updatedAt": "2026-10-11T22:57:52.147Z"
+    },
+    "review-for-type-safety": {
+      "source": "mlms13/orcish-skills",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/mlms13/orcish-skills.git",
+      "skillPath": "skills/review-for-type-safety/SKILL.md",
+      "skillFolderHash": "4781471d6d2c554916962250a4d42b2bb6247f05",
+      "installedAt": "2026-10-11T22:57:52.147Z",
+      "updatedAt": "2026-10-11T22:57:52.147Z"
+    },
+    "review-prose": {
+      "source": "mlms13/orcish-skills",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/mlms13/orcish-skills.git",
+      "skillPath": "skills/review-prose/SKILL.md",
+      "skillFolderHash": "f18b5fbdbc3155d9448bae08806ffbe79bc66e33",
+      "installedAt": "2026-10-11T22:57:52.148Z",
+      "updatedAt": "2026-10-11T22:57:52.148Z"
+    },
+    "review-rules": {
+      "source": "mlms13/orcish-skills",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/mlms13/orcish-skills.git",
+      "skillPath": "skills/review-rules/SKILL.md",
+      "skillFolderHash": "aba2704ccee3b5ae4e8bd670c38057a3c9e55056",
+      "installedAt": "2026-10-11T22:57:52.148Z",
+      "updatedAt": "2026-10-11T22:57:52.148Z"
+    },
+    "review-tests": {
+      "source": "mlms13/orcish-skills",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/mlms13/orcish-skills.git",
+      "skillPath": "skills/review-tests/SKILL.md",
+      "skillFolderHash": "a40c989bf6ff9d7b4508f645daf989fd3b3627d2",
+      "installedAt": "2026-10-11T22:57:52.148Z",
+      "updatedAt": "2026-10-11T22:57:52.148Z"
     }
   },
   "dismissed": {
     "findSkillsPrompt": true
-  }
+  },
+  "lastSelectedAgents": [
+    "amp",
+    "cline",
+    "codex",
+    "cursor",
+    "droid",
+    "gemini-cli",
+    "github-copilot",
+    "kilo",
+    "kimi-code-cli",
+    "opencode",
+    "pi",
+    "warp",
+    "zed"
+  ]
 }
