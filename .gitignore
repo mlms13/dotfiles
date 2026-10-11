@@ -74,12 +74,8 @@
 # Not ready to sync
 /.claude/hooks/redirect-gh-api.mjs
 
-# Vendor agent skills into the repo so a fresh checkout has them (the setup
-# runner just ensures the ~/.claude/skills symlink). Drop these lines and track
-# only .skill-lock.json if you'd rather restore skills from the lock instead.
-#
-# Un-ignore narrowly: .agents/ is tool-managed, so anything a tool drops in
-# later (auth caches, MCP config) stays ignored unless we opt it in here.
+# Much of `.agents` stays ignored, but we selectively un-ignore skills (even
+# vendored skills installed from npm) as well as shared agent "tools"
 !/.agents/
 /.agents/*
 !/.agents/.skill-lock.json
@@ -89,6 +85,7 @@
 
 # Shared tool sources
 !/.agents/README.md
+!/.agents/AGENTS.md
 !/.agents/tools/
 /.agents/tools/*
 !/.agents/tools/gh-read/
