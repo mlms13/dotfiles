@@ -136,7 +136,7 @@ test("installer preserves local repos/settings, migrates the old allowlist, and 
   assert.deepEqual(JSON.parse(readFileSync(join(home, ".agents/gh-read-repos.json"))), ["private/repo"]);
   const settings = JSON.parse(readFileSync(join(home, ".claude/settings.json")));
   assert.equal(settings.model, "existing");
-  assert.equal(settings.permissions.allow.length, 2);
+  assert.deepEqual(settings.permissions.allow, ["Bash(git status *)", "Bash(~/.agents/bin/gh-read *)"]);
   assert.equal(settings.permissions.ask.length, 3);
   const rules = readFileSync(join(home, ".codex/rules/gh-read.rules"), "utf8");
   assert.ok(rules.includes(join(home, ".agents/bin/gh-read")));

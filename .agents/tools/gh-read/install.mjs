@@ -32,7 +32,7 @@ export function install(home = userInfo().homedir, node = process.execPath, agen
     const settings = existsSync(path) ? JSON.parse(readFileSync(path, "utf8")) : {};
     settings.permissions ??= {};
     settings.permissions.allow ??= [];
-    const rule = `Bash(${launcher} *)`;
+    const rule = "Bash(~/.agents/bin/gh-read *)";
     if (!settings.permissions.allow.includes(rule)) settings.permissions.allow.push(rule);
     settings.permissions.ask ??= [];
     for (const pattern of ["Edit(~/.agents/bin/gh-read)", "Edit(~/.agents/lib/gh-read/**)", "Edit(~/.agents/gh-read-repos.json)"]) {

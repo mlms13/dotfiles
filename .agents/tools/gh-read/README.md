@@ -38,8 +38,9 @@ Codex gets a rule in `~/.codex/rules/gh-read.rules` for the launcher's absolute
 path. Claude gets the equivalent Bash allowance merged into its user-level
 `~/.claude/settings.json`, plus ask rules for edits to the installed wrapper
 and allowlist. Existing settings are preserved. Restart the selected agents to
-reload permission changes. Agents should invoke the launcher's absolute path,
-not `node` on the source file.
+reload permission changes. Agents should invoke the launcher as
+`~/.agents/bin/gh-read`, so it stays portable across machines), not `node` on
+the source file.
 
 Install and update through the agent's normal approval mechanism. The installer
 pins the current Node executable, so rerun it after replacing that Node version.

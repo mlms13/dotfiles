@@ -3,7 +3,7 @@
     "allow": [
       "Read(~/.agents/**)",
       "Read(~/.claude/**)",
-      "Bash(/Users/michael/.agents/bin/gh-read *)",
+      "Bash(~/.agents/bin/gh-read *)",
       "Bash(brew info *)",
       "Bash(command -v *)",
       "Bash(fd --version)",
