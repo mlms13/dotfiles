@@ -37,6 +37,8 @@ export const core = (id: string, { pkg, command, bundle }: Toolkit): Bundle =>
     pkg("fd"),
     pkg("ripgrep", {}, "ripgrep (rg)"),
     pkg("uv"),
+    pkg("worktrunk", {}, "worktrunk (wt)"),
+    pkg("tuicr"),
 
     command({
       id: "claude-code",

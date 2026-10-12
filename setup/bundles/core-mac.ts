@@ -79,9 +79,16 @@ export const coreMac = (id: string, { brew, command, bundle }: Toolkit): Bundle 
       service("yabai"),
       service("skhd"),
 
-      // ghostty + starship assume patched glyphs, so the Nerd Font is needed
-      brew.cask("font-fira-code-nerd-font", { description: "Fira Code Nerd Font" }),
-      brew.cask("font-fira-code", { description: "Fira Code" }),
+      // ghostty + starship assume patched glyphs, so the Nerd Font is needed.
+      // `present` looks for the font itself, not for a brew installation
+      brew.cask("font-fira-code-nerd-font", {
+        description: "Fira Code Nerd Font",
+        present: { path: "~/Library/Fonts/FiraCodeNerdFont-Regular.ttf" },
+      }),
+      brew.cask("font-fira-code", {
+        description: "Fira Code",
+        present: { path: "~/Library/Fonts/FiraCode-Regular.ttf" },
+      }),
 
       brew.cask("firefox", { present: { path: "/Applications/Firefox.app" } }),
       brew.cask("google-chrome", { present: { path: "/Applications/Google Chrome.app" } }),
