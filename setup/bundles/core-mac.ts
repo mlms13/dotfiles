@@ -54,6 +54,17 @@ export const coreMac = (id: string, { brew, command, bundle }: Toolkit): Bundle 
       // `present` on every app cask: brew can't see an app dragged in from a
       // .dmg, and installing a cask over one fails outright instead of adopting it.
 
+      // Provides the default interpreter when asdf delegates to the system.
+      brew.formula("python", {
+        // brew list reports the versioned formula name, not the python alias.
+        present: {
+          path: [
+            "/opt/homebrew/opt/python/libexec/bin/python",
+            "/usr/local/opt/python/libexec/bin/python",
+          ]
+        },
+      }),
+
       brew.cask("ghostty", { present: { path: "/Applications/Ghostty.app" } }),
       brew.cask("raycast", { present: { path: "/Applications/Raycast.app" } }),
       brew.cask("alt-tab", { present: { path: "/Applications/AltTab.app" } }),

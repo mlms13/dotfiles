@@ -1,7 +1,10 @@
+import { asdf } from "./bundles/asdf";
 import { core } from "./bundles/core";
 import { coreMac } from "./bundles/core-mac";
 import { macosDefaults } from "./bundles/macos-defaults";
+import { node } from "./bundles/node";
 import { personalMac } from "./bundles/personal-mac";
+import { pnpm } from "./bundles/pnpm";
 import { shell } from "./bundles/shell";
 import { skills } from "./bundles/skills";
 import { workMac } from "./bundles/work-mac";
@@ -11,6 +14,9 @@ import type { ConfigFn } from "mlms13-setup-runner";
 const config: ConfigFn = (tk) => ({
   bundles: [
     core("core", tk),
+    node("node", tk),
+    pnpm("pnpm", tk),
+    asdf("asdf", tk),
     shell("shell", tk),
     skills("skills", tk),
     coreMac("core-mac", tk),
@@ -20,14 +26,14 @@ const config: ConfigFn = (tk) => ({
   ],
   profiles: {
     "mac-personal": [
-      "core", "shell", "skills",
+      "core", "node", "pnpm", "shell", "skills",
       "core-mac", "macos-defaults", "personal-mac",
     ],
     "mac-work": [
-      "core", "shell", "skills",
+      "core", "node", "pnpm", "asdf", "shell", "skills",
       "core-mac", "macos-defaults", "work-mac",
     ],
-    base: ["core", "shell", "skills"],
+    base: ["core", "node", "pnpm", "shell", "skills"],
   },
   defaultProfile: "mac-personal",
 });

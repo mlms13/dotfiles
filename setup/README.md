@@ -47,6 +47,30 @@ bunx github:mlms13/setup-runner --config ~/setup core skills --dry-run
 bunx github:mlms13/setup-runner --config ~/setup --yes
 ```
 
+### Runtimes
+
+All profiles install **fnm** for Node and **standalone pnpm**. Setup supplies
+initial defaults and preserves subsequent version choices and pnpm self-updates.
+In interactive zsh, fnm follows `.node-version` or `.nvmrc` files through
+subdirectories and restores its default outside projects. pnpm honors project
+`packageManager` pins. Mac profiles also install **Homebrew Python**, with no
+minor version hardcoded in the catalog or shell paths.
+
+Only `mac-work` includes **asdf**. Project pins take precedence; the bundle sets
+Node and pnpm to `system` in the ignored `~/.tool-versions` so unpinned commands
+fall through to fnm and standalone pnpm. It also fills missing home defaults for
+installed plugins. Rerun the `asdf` bundle after adding plugins; work setup owns
+project runtime installation. A `system` fallback requires an installed tool.
+
+```sh
+fnm install 22             # install another Node version
+fnm use 22                 # select it in this shell
+fnm default 24             # set the default outside projects
+pnpm self-update           # run outside a pinned project to update the default
+```
+
+Open a new shell after setup to load the PATH configuration in `.zshrc`.
+
 ### Editing the catalog
 
 `bun run check` needs the dev deps installed first — `bun run` does not
@@ -77,4 +101,3 @@ records which skills came from upstream repos and at what `skillFolderHash`.
   carries both the skill's files and its `.skill-lock.json` entry.
 - **Update upstream:** re-run `npx skills` and commit. Because it's vendored,
   an upstream change arrives as a **reviewable diff** instead of silent drift.
-

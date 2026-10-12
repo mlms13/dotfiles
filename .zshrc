@@ -73,7 +73,12 @@ if [[ "$OSTYPE" == "linux"* ]]; then
 fi
 
 if [[ "$OSTYPE" == "darwin"* ]]; then
+  path_prepend /usr/local/bin
   path_prepend /opt/homebrew/bin
+
+  # Homebrew keeps the unversioned Python commands here.
+  path_prepend /usr/local/opt/python/libexec/bin
+  path_prepend /opt/homebrew/opt/python/libexec/bin
 
   # PostgreSQL (MacOS-specific path)
   path_prepend "/opt/homebrew/opt/libpq/bin"
@@ -82,14 +87,6 @@ fi
 ################################################################################
 # Tool-Specific
 ################################################################################
-
-# Node
-path_prepend "$HOME/.fnm"
-path_prepend "$HOME/.npm-global/bin"
-
-if command -v fnm >/dev/null 2>&1; then
-  eval "$(fnm env --use-on-cd)"
-fi
 
 # Bun
 export BUN_INSTALL="$HOME/.bun"
@@ -129,11 +126,35 @@ if command -v pyenv >/dev/null 2>&1; then
   eval "$(pyenv virtualenv-init -)"
 fi
 
-# asdf
-path_prepend "${ASDF_DATA_DIR:-$HOME/.asdf}/shims"
-
 # nix
 path_prepend "/nix/var/nix/profiles/default/bin"
+
+# Runtime precedence: later prepends win. Keep these after other tool managers.
+# Node and pnpm
+# pnpm (asdf project pins take precedence below)
+if [[ "$OSTYPE" == "darwin"* ]]; then
+  export PNPM_HOME="${PNPM_HOME:-$HOME/Library/pnpm}"
+else
+  export PNPM_HOME="${PNPM_HOME:-${XDG_DATA_HOME:-$HOME/.local/share}/pnpm}"
+fi
+path_prepend "$PNPM_HOME"
+path_prepend "$PNPM_HOME/bin"
+
+# fnm owns the default Node; asdf project pins take precedence below.
+path_prepend "$HOME/.fnm"
+path_prepend "$HOME/.local/share/fnm"
+if command -v fnm >/dev/null 2>&1; then
+  eval "$(fnm env --use-on-cd --shell zsh --version-file-strategy=recursive --resolve-engines=false)"
+fi
+
+# asdf resolves project pins on each invocation, including inside scripts.
+# The work setup bundle supplies machine-local `system` defaults at home.
+if command -v asdf >/dev/null 2>&1; then
+  path_prepend "${ASDF_DATA_DIR:-$HOME/.asdf}/shims"
+fi
+
+# Keep the standalone CLI ahead of npm-generated asdf shims.
+path_prepend "$HOME/.codex/packages/standalone/current/bin"
 
 # fzf
 if command -v fzf >/dev/null 2>&1; then
