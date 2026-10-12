@@ -53,7 +53,9 @@ elif [ "$OS" = "Linux" ]; then
   fi
 fi
 
-if ! command -v bun >/dev/null 2>&1; then
+# Claude hooks and .zshrc use this path independently of project runtimes.
+if ! "$HOME/.bun/bin/bun" --version >/dev/null 2>&1; then
   log "Installing Bun…"
-  curl -fsSL https://bun.sh/install | bash
+  curl -fsSL https://bun.sh/install | BUN_INSTALL="$HOME/.bun" bash
+  "$HOME/.bun/bin/bun" --version
 fi

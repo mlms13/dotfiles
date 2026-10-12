@@ -1,3 +1,4 @@
+import { homedir } from "node:os";
 import type { Bundle, Toolkit } from "mlms13-setup-runner";
 
 /** Baseline CLI environment for any machine of mine, shell tooling and dev tooling
@@ -37,4 +38,17 @@ export const core = (id: string, { pkg, command, bundle }: Toolkit): Bundle =>
     pkg("ripgrep", {}, "ripgrep (rg)"),
     pkg("uv"),
 
+    command({
+      id: "claude-code",
+      description: "Claude Code (native installer)",
+      // Keep existing Homebrew install; migration is a one-time manual choice
+      check: async () => {
+        if (await Bun.file(`${homedir()}/.local/bin/claude`).exists()) return true;
+        if (!Bun.which("brew")) return false;
+        return (await Bun.$`brew list --cask claude-code`.quiet().nothrow()).exitCode === 0;
+      },
+      apply: async () => {
+        await Bun.$`bash -o pipefail -c ${"curl -fsSL https://claude.ai/install.sh | bash"}`;
+      },
+    }),
   ]);
