@@ -4,5 +4,11 @@ approvals_reviewer = "auto_review"
 personality = "pragmatic"
 
 [tui]
-status_line = ["model-with-reasoning", "current-dir", "reasoning", "context-used", "weekly-limit"]
+status_line = [
+  "model-with-reasoning",
+  "current-dir",
+  "git-branch",
+  "context-used",
+  "weekly-limit",
+]
 status_line_use_colors = true
