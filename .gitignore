@@ -71,6 +71,15 @@
 !/.claude/hooks
 !/.claude/hooks/**
 
+# Codex instructions, shared preferences, and command approvals; local config and state stay local.
+!/.codex/
+/.codex/*
+!/.codex/AGENTS.md
+!/.codex/shared.config.toml
+!/.codex/rules/
+/.codex/rules/*
+!/.codex/rules/default.rules
+
 # Not ready to sync
 /.claude/hooks/redirect-gh-api.mjs
 
@@ -146,4 +155,3 @@ id_ed25519*
 credentials.json
 secrets.*
 *_secret*
-

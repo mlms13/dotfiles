@@ -51,6 +51,7 @@ bindkey -M viins 'kj' vi-cmd-mode
 alias vim="nvim"
 alias vi="nvim"
 alias vimdiff='nvim -d'
+alias codex='codex --profile shared'
 
 export EDITOR="nvim"
 export VISUAL="nvim"

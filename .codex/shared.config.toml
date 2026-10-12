@@ -1,0 +1,8 @@
+model = "gpt-6-astra"
+model_reasoning_effort = "high"
+approvals_reviewer = "auto_review"
+personality = "pragmatic"
+
+[tui]
+status_line = ["model-with-reasoning", "current-dir", "reasoning", "context-used", "weekly-limit"]
+status_line_use_colors = true
