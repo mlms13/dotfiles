@@ -84,6 +84,7 @@
 !/.agents/skills/
 !/.agents/skills/**
 /.agents/skills/.trash/
+/.agents/skills/synced/
 
 # Shared tool sources
 !/.agents/README.md
